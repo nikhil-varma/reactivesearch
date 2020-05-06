@@ -1,3 +1,4 @@
+/** @jsx jsx */
 import React, { Component } from 'react';
 import { withTheme } from 'emotion-theming';
 
@@ -5,6 +6,7 @@ import { setValue, clearValues } from '@appbaseio/reactivecore/lib/actions';
 import { componentTypes, CLEAR_ALL } from '@appbaseio/reactivecore/lib/utils/constants';
 import types from '@appbaseio/reactivecore/lib/utils/types';
 import { getClassName, handleA11yAction } from '@appbaseio/reactivecore/lib/utils/helper';
+import { jsx } from '@emotion/core';
 import Button, { filters } from '../../styles/Button';
 import Container from '../../styles/Container';
 import Title from '../../styles/Title';
@@ -80,7 +82,7 @@ class SelectedFilters extends Component {
 						: this.renderValue(value, isArray);
 					return (
 						<Button
-							className={getClassName(this.props.innerClass, 'button') || null}
+							css={getClassName(this.props.innerClass, 'button') || null}
 							key={`${component}-${index + 1}`}
 							tabIndex="0"
 							onKeyPress={event =>
@@ -132,18 +134,17 @@ class SelectedFilters extends Component {
 		return (
 			<Container
 				style={this.props.style}
-				className={`${filters(theme)}
-				${this.props.className || ''}`}
+				css={[filters(theme), this.props.className || '']}
 			>
 				{this.props.title && hasFilters && (
-					<Title className={getClassName(this.props.innerClass, 'title') || null}>
+					<Title css={[getClassName(this.props.innerClass, 'title') || null]}>
 						{this.props.title}
 					</Title>
 				)}
 				{filtersToRender}
 				{this.props.showClearAll && hasFilters ? (
 					<Button
-						className={getClassName(this.props.innerClass, 'button') || null}
+						css={[getClassName(this.props.innerClass, 'button') || null]}
 						onClick={this.clearValues}
 						tabIndex="0"
 						onKeyPress={event => handleA11yAction(event, this.clearValues)}
