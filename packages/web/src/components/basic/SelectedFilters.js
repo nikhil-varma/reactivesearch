@@ -137,14 +137,14 @@ class SelectedFilters extends Component {
 				css={[filters(theme), this.props.className || '']}
 			>
 				{this.props.title && hasFilters && (
-					<Title css={[getClassName(this.props.innerClass, 'title') || null]}>
+					<Title css={getClassName(this.props.innerClass, 'title') || null}>
 						{this.props.title}
 					</Title>
 				)}
 				{filtersToRender}
 				{this.props.showClearAll && hasFilters ? (
 					<Button
-						css={[getClassName(this.props.innerClass, 'button') || null]}
+						css={getClassName(this.props.innerClass, 'button') || null}
 						onClick={this.clearValues}
 						tabIndex="0"
 						onKeyPress={event => handleA11yAction(event, this.clearValues)}
