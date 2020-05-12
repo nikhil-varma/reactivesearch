@@ -1,3 +1,4 @@
+/** @jsx jsx */
 import React, { Component } from 'react';
 import {
 	addComponent,
@@ -26,6 +27,7 @@ import { componentTypes } from '@appbaseio/reactivecore/lib/utils/constants';
 import XDate from 'xdate';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import { withTheme } from 'emotion-theming';
+import { jsx } from '@emotion/core';
 
 import DateContainer from '../../styles/DateContainer';
 import Title from '../../styles/Title';
@@ -227,7 +229,7 @@ class DatePicker extends Component {
 				className={this.props.className}
 			>
 				{this.props.title && (
-					<Title className={getClassName(this.props.innerClass, 'title') || null}>
+					<Title css={getClassName(this.props.innerClass, 'title') || null}>
 						{this.props.title}
 					</Title>
 				)}
@@ -253,7 +255,7 @@ class DatePicker extends Component {
 						key={this.state.key}
 						clickUnselectsDay={this.props.clickUnselectsDay}
 						onDayChange={this.handleDayPicker}
-						classNames={{
+						css={[{
 							container:
 								getClassName(this.props.innerClass, 'daypicker-container')
 								|| 'DayPickerInput',
@@ -263,7 +265,7 @@ class DatePicker extends Component {
 							overlay:
 								getClassName(this.props.innerClass, 'daypicker-overlay')
 								|| 'DayPickerInput-Overlay',
-						}}
+						}]}
 						{...this.props.dayPickerInputProps}
 					/>
 					{this.props.showClear && this.state.currentDate && (
