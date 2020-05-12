@@ -1,3 +1,4 @@
+/** @jsx jsx */
 import React, { Component } from 'react';
 import {
 	addComponent,
@@ -26,6 +27,7 @@ import XDate from 'xdate';
 import { componentTypes } from '@appbaseio/reactivecore/lib/utils/constants';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import { withTheme } from 'emotion-theming';
+import { jsx } from '@emotion/core';
 
 import DateContainer from '../../styles/DateContainer';
 import Title from '../../styles/Title';
@@ -396,15 +398,15 @@ class DateRange extends Component {
 			<DateContainer
 				range
 				style={this.props.style}
-				className={this.props.className}
+				css={this.props.className}
 				showBorder={!this.props.showClear}
 			>
 				{this.props.title && (
-					<Title className={getClassName(this.props.innerClass, 'title') || null}>
+					<Title css={getClassName(this.props.innerClass, 'title') || null}>
 						{this.props.title}
 					</Title>
 				)}
-				<Flex className={getClassName(this.props.innerClass, 'input-container') || null}>
+				<Flex css={getClassName(this.props.innerClass, 'input-container') || null}>
 					<Flex
 						flex={2}
 						showBorder={this.props.showClear}
@@ -433,7 +435,7 @@ class DateRange extends Component {
 								'aria-label': `${this.props.componentId}-start-input`,
 							}}
 							onDayChange={this.handleStartDate}
-							classNames={{
+							css={[{
 								container:
 									getClassName(this.props.innerClass, 'daypicker-container')
 									|| 'DayPickerInput',
@@ -445,7 +447,7 @@ class DateRange extends Component {
 								overlay:
 									getClassName(this.props.innerClass, 'daypicker-overlay')
 									|| 'DayPickerInput-Overlay',
-							}}
+							}]}
 							{...this.props.dayPickerInputProps}
 						/>
 						{this.props.showClear
@@ -488,7 +490,7 @@ class DateRange extends Component {
 								'aria-label': `${this.props.componentId}-end-input`,
 							}}
 							onDayChange={this.handleEndDate}
-							classNames={{
+							css={[{
 								container:
 									getClassName(this.props.innerClass, 'daypicker-container')
 									|| 'DayPickerInput',
@@ -500,7 +502,7 @@ class DateRange extends Component {
 								overlay:
 									getClassName(this.props.innerClass, 'daypicker-overlay')
 									|| 'DayPickerInput-Overlay',
-							}}
+							}]}
 							{...this.props.dayPickerInputProps}
 						/>
 						{this.props.showClear
