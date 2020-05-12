@@ -1,3 +1,4 @@
+/** @jsx jsx */
 import React, { Component } from 'react';
 
 import {
@@ -22,6 +23,7 @@ import {
 } from '@appbaseio/reactivecore/lib/utils/helper';
 import types from '@appbaseio/reactivecore/lib/utils/types';
 import { componentTypes } from '@appbaseio/reactivecore/lib/utils/constants';
+import { jsx } from '@emotion/core';
 
 import Title from '../../styles/Title';
 import Button, { numberBoxContainer } from '../../styles/Button';
@@ -201,23 +203,23 @@ class NumberBox extends Component {
 
 	render() {
 		return (
-			<Container style={this.props.style} className={this.props.className}>
+			<Container style={this.props.style} css={this.props.className}>
 				{this.props.title && (
-					<Title className={getClassName(this.props.innerClass, 'title') || null}>
+					<Title css={getClassName(this.props.innerClass, 'title') || null}>
 						{this.props.title}
 					</Title>
 				)}
 				<Flex
 					labelPosition={this.props.labelPosition}
 					justifyContent="space-between"
-					className={numberBoxContainer}
+					css={numberBoxContainer}
 				>
-					<span className={getClassName(this.props.innerClass, 'label') || null}>
+					<span css={getClassName(this.props.innerClass, 'label') || null}>
 						{this.props.data.label}
 					</span>
 					<div>
 						<Button
-							className={getClassName(this.props.innerClass, 'button') || null}
+							css={getClassName(this.props.innerClass, 'button') || null}
 							onClick={this.decrementValue}
 							disabled={this.state.currentValue === this.props.data.start}
 						>
@@ -225,7 +227,7 @@ class NumberBox extends Component {
 						</Button>
 						{this.state.currentValue}
 						<Button
-							className={getClassName(this.props.innerClass, 'button') || null}
+							css={getClassName(this.props.innerClass, 'button') || null}
 							onClick={this.incrementValue}
 							disabled={this.state.currentValue === this.props.data.end}
 						>
